@@ -1,27 +1,8 @@
 import { NextResponse } from 'next/server';
-import formData from 'form-data';
-import Mailgun from 'mailgun.js';
-
-const mailgun = new Mailgun(formData);
+import nodemailer from 'nodemailer';
 
 export async function POST(req) {
   try {
-    // Get the Mailgun API key from headers
-    const apiKey = req.headers.get('x-mailgun-api-key');
-
-    
-    if (!apiKey) {
-      return NextResponse.json(
-        { message: 'Missing API key in headers' },
-        { status: 400 }
-      );
-    }
-
-    const mg = mailgun.client({
-      username: 'api',
-      key: apiKey,  // Use the API key from headers
-    });
-
     const body = await req.json();
     const { recipient, subject, content } = body;
 
@@ -32,18 +13,29 @@ export async function POST(req) {
       );
     }
 
-    const response = await mg.messages.create('mindthatseekstruth.com', {
+    // Nodemailer transporter using your provided Gmail credentials
+    const transporter = nodemailer.createTransport({
+      service: 'gmail',
+      auth: {
+        user: 'mehrandadbeh.anziandco@gmail.com',
+        pass: 'lasm twxy icpq bduy',
+      },
+    });
+
+    // Send email
+    const info = await transporter.sendMail({
       from: 'Mehran Dadhbeh <noreply@mindthatseekstruth.com>',
-      to: [recipient],
-      subject,
+      to: recipient,
+      subject: subject,
       text: content,
       html: `<p>${content}</p>`,
     });
 
     return NextResponse.json(
-      { message: 'Email sent successfully', response },
+      { message: 'Email sent successfully', response: info },
       { status: 200 }
     );
+
   } catch (error) {
     console.error('Error sending email:', error);
     return NextResponse.json(

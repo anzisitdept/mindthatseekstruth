@@ -73,7 +73,7 @@ const ConsultationBookingMechanism = ({planData}) => {
               "x-mailgun-api-key": process.env.NEXT_PUBLIC_MAILGUN_API_KEY
             },
             body: JSON.stringify({
-              "recipient": email,
+              "recipient": "Md007m@gmail.com",
               "subject": `You've new consultation, Mehran!`,
               "content": generateConsultationHtml({name, email, skypeId, time, day, planData: planData}),
             }),
@@ -96,6 +96,7 @@ const ConsultationBookingMechanism = ({planData}) => {
 
   const handleSubmit = (e)=>{
     e.preventDefault();
+      // handlePostSubmit()
     setShouldAskToPay(true);
   }
 

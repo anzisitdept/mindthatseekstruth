@@ -46,7 +46,6 @@ export default function AskQuestionPage() {
   };
 
   const handlePostSubmit = async (e) => {
-    e.preventDefault();
     const data = {
       customer: {
         name,
@@ -65,13 +64,14 @@ export default function AskQuestionPage() {
         },
         body: JSON.stringify({
           "recipient": "Md007m@gmail.com",
+          // "recipient": "djam4343@gmail.com",
           "subject": `A new paid question, Mehran!`,
-          "content": `Hello Mehran,\n\nA new question has been submitted and is awaiting your response.\n\nCustomer Details:\n- Name: ${customer.name}\n- Email: ${customer.email}\n- Gender: ${customer.gender}\n\nQuestion:\n\"${question}\"\n\n\n\nPlease review and respond as soon as possible.\n\nBest,\nYour Team`,
+          "content": `Hello Mehran,\n\nA new question has been submitted and is awaiting your response.\n\nCustomer Details:\n- Name: ${data.customer.name}\n- Email: ${data.customer.email}\n- Gender: ${data.customer.gender}\n\nQuestion:\n\"${data.question}\"\n\n\n\nPlease review and respond as soon as possible.\n\nBest,\nYour Team`,
         }),
       });
       toast.success("Your message is received, you will get a reply on your email.")
     } catch (error) {
-      
+      toast.error(error.message);
     }
   };
 
