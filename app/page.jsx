@@ -19,6 +19,9 @@ export default function Home() {
         <HeroSection />
         <HelpSeekerSection />
         <MindsetBookSection />
+        <section>
+          <Image src='/apps coming soon banner.png' width='720' height='720' className='w-full' alt='Apps coming soon | OCD HOCD | Break up' />
+        </section>
         <YoutubeLatestVideosSections channelId={"UUbVS0QWs2qSP02xkOjtqVCQ"}/>
         <LetsTalkSection/>
         <BookSection/>

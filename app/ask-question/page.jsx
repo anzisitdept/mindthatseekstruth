@@ -29,7 +29,7 @@ export default function AskQuestionPage() {
       quantity: 1,
       unit_amount: {
         currency_code: "USD",
-        value: "25.00",
+        value: "45.00",
       },
     },
   ];
@@ -189,7 +189,7 @@ export default function AskQuestionPage() {
           </p>
           
           <p className="text-center text-xl    text-gray-500">
-            $25 /  question 
+            $45 /  question 
           </p>
 
           <form
