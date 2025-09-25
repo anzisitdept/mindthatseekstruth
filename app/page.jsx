@@ -11,6 +11,7 @@ import DoubtsSection from "./sections/DoubtsSection";
 import YoutubeLatestVideosSections from "./components/YoutubeContent";
 import ListedInMagazine from "./components/ListedInMagazine";
 import RecentBlogs from "./sections/RecentBlogs";
+import HOCDIntro from "./sections/HOCDIntro";
 
 export default function Home() {
   return (
@@ -27,6 +28,7 @@ export default function Home() {
         <BookSection/>
         <ListedInMagazine/>
         <AskQuestionIntro/>
+        <HOCDIntro/>
         <TestimonialsSection/>
         <RecentBlogs/>  
         <DoubtsSection/>

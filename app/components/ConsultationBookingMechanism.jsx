@@ -172,8 +172,10 @@ const ConsultationBookingMechanism = ({planData}) => {
       </div>
       <p className="text-md text-left text-gray-800 italic">
       {`Mehran will consult you, for ${planData.duration} on coming ${day}, between ${time}`}
-
+<br />
+All requested appointments are subject to confirmation to avoid double booking on the same time slot
       </p>
+      
 <Button
               className="w-full bg-black py-3 rounded-xl text-white text-lg flex items-center justify-center gap-2 group my-3 !font-semibold"
               loading={isSubmissionLoading}
