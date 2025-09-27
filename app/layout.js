@@ -6,6 +6,7 @@ import Footer from "./components/Footer";
 import ToastProvider from "./components/ToastProvider";
 import { usePathname } from "next/navigation";
 import { Suspense } from "react";
+import ChatbotWidget from "./components/ChatBot";
 
 const dancingScript = Dancing_Script({
   subsets: ["latin"],
@@ -26,7 +27,7 @@ export default function RootLayout({ children }) {
           content="Mind That Seeks Truth is a dynamic space for curious minds eager to explore life’s most profound questions..."
         />
         <link rel="icon" href="/logo.png" type="image/gif" sizes="16x16" />
-        <script src="//code.tidio.co/qdooksfizp0t2mpcla797raduz6rnty3.js" async></script>
+        {/* <script src="//code.tidio.co/qdooksfizp0t2mpcla797raduz6rnty3.js" async></script> */}
       </head>
       <body className={`${dancingScript.variable} antialiased`}>
         <Suspense>
@@ -34,6 +35,7 @@ export default function RootLayout({ children }) {
             {!hideHeaderFooter && <Header />}
             {children}
             {!hideHeaderFooter && <Footer />}
+            <ChatbotWidget />
           </ToastProvider>
         </Suspense>
       </body>

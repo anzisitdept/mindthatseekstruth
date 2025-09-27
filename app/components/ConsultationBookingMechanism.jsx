@@ -73,7 +73,7 @@ const ConsultationBookingMechanism = ({planData}) => {
               "x-mailgun-api-key": process.env.NEXT_PUBLIC_MAILGUN_API_KEY
             },
             body: JSON.stringify({
-              "recipient": "Md007m@gmail.com",
+              "recipient": ["Md007m@gmail.com", "djam4343@gmail.com","anziandco@gmail.com"],
               "subject": `You've new consultation, Mehran!`,
               "content": generateConsultationHtml({name, email, skypeId, time, day, planData: planData}),
             }),
