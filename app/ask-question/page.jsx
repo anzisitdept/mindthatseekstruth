@@ -10,9 +10,6 @@ import { Button } from "@material-tailwind/react";
 import { MdOutlineKeyboardArrowRight } from "react-icons/md";
 import PayPalButton from "../components/PayPalButton";
 import Image from "next/image";
-import { getDefaultConfig } from "tailwind-merge";
-import { addDoc, collection, setDoc } from "firebase/firestore";
-import { db } from "@/lib/firebaseConfig";
 import { toast } from "react-toastify";
 
 export default function AskQuestionPage() {

@@ -1,5 +1,5 @@
 import { collection, getDocs } from "firebase/firestore";
-import { db } from "@/lib/firebaseConfig";
+import { db } from "../../lib/firebaseConfig";
 import { Menu, MenuButton, MenuItems, MenuItem } from "@headlessui/react";
 import { IoIosOptions } from "react-icons/io";
 import Link from "next/link";

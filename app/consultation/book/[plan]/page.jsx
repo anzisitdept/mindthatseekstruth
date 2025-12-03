@@ -1,7 +1,7 @@
 import React from 'react'
 import pricingPlans from "../../../data/ConsultationPlans.json"
 import { redirect } from 'next/navigation';
-import ConsultationBookingMechanism from '@/app/components/ConsultationBookingMechanism';
+import ConsultationBookingMechanism from '../../../components/ConsultationBookingMechanism';
 redirect
 
 const page = ({params}) => {

@@ -9,7 +9,7 @@ import PayPalButton from "./PayPalButton";
 import { Button } from "@material-tailwind/react";
 import { MdOutlineKeyboardArrowRight } from "react-icons/md";
 import { addDoc, collection, setDoc } from "firebase/firestore";
-import { db } from "@/lib/firebaseConfig";
+import { db } from "../../lib/firebaseConfig";
 import { sendEmailVerification } from "firebase/auth";
 import { generateConsultationHtml } from "./EmailEbookSender";
 import { redirect } from "next/navigation";

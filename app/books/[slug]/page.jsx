@@ -1,6 +1,6 @@
-import ProductPageUi from '@/app/components/ProductPageUi';
+import ProductPageUi from '../../components/ProductPageUi';
 import Image from 'next/image';
-import { getProductData } from '@/app/components/getProductData';
+import { getProductData } from '../../components/getProductData';
 
 // Server component for the product detail page
 export default async function ProductDetailPage({ params }) {

@@ -14,7 +14,7 @@ import { useRouter } from "next/navigation";
 import PayPalButton from "../components/PayPalButton";
 import preparePayPalData from "../helper/preparePayPalData";
 import { redirect } from "next/navigation";
-import { getProductData } from "@/app/components/getProductData";
+import { getProductData } from "../components/getProductData";
 import { generateEbookHtml } from "../components/EmailEbookSender";
 
 const CheckoutPage = () => {

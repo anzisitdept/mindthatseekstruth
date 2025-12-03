@@ -1,5 +1,5 @@
 import { getDocs, collection,  } from "firebase/firestore";    
-import { db } from "@/lib/firebaseConfig";
+import { db } from "../../lib/firebaseConfig";
     
     const booksCollectionRef = collection(db, "books");
     const querySnapshot = await getDocs(booksCollectionRef);

@@ -5,7 +5,7 @@ import { IoIosOptions } from "react-icons/io";
 import Link from "next/link";
 import BookCard from '../components/BookCard';
 import { collection, getDocs } from 'firebase/firestore';
-import { app, db } from '@/lib/firebaseConfig';
+import { app, db } from '../../lib/firebaseConfig';
 
 // Helper function to read JSON file
 const getAllBooks = async ()=>{
