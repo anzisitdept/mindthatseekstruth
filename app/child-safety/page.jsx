@@ -16,7 +16,7 @@ export default function ChildSafetyPolicyPage() {
   const [currentDate, setCurrentDate] = useState('');
   const [appName, setAppName] = useState('The Ultimate Break-up Guide');
   const [developerName, setDeveloperName] = useState('Mind That Seeks Truth Publishing Ltd.');
-  const [supportEmail, setSupportEmail] = useState('md007m@gmail.com');
+  const [supportEmail, setSupportEmail] = useState('info@mindthatseekstruth.com');
   const [websiteUrl, setWebsiteUrl] = useState('www.mindthatseekstruth.com');
   const [privacyPolicyUrl, setPrivacyPolicyUrl] = useState('/privacy-policy');
   
