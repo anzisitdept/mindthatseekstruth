@@ -9,8 +9,9 @@ const Footer = () => {
 
   const followUsLinks = [
     { name: "Facebook", href: "https://facebook.com/mindthatseekstruth" },
-    { name: "Twitter", href: "https://twitter.com/mindtruth" },
+    { name: "Twitter", href: "https://twitter.com/truthseekingmind" },
     { name: "Instagram", href: "https://instagram.com/mindthatseekstruth" },
+    { name: "TikTok", href: "https://www.tiktok.com/@truthseekingmind" },
   ];
 
   const legalLinks = [
