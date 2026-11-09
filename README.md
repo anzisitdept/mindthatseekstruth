@@ -16,6 +16,23 @@ bun dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
+## Email notifications
+
+The `/api/send-email` route uses Nodemailer with Gmail. Add these server-side
+variables to `.env.local` (see `.env.example`):
+
+- `EMAIL_USER`: Gmail account used to send email
+- `EMAIL_APP_PASSWORD`: Gmail app password for that account
+- `EMAIL_NOTIFICATION_RECIPIENT`: address for internal question, consultation,
+  and support notifications
+
+Customer confirmation emails continue to go to the recipient supplied by the
+app. Keep these values out of `NEXT_PUBLIC_*` variables and do not commit
+`.env.local`.
+
+To send a test message using the same Gmail sender and recipient, run
+`node emailTest.js` from the project root.
+
 You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
 
 This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.

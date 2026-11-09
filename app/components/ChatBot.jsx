@@ -151,7 +151,7 @@ export default function ChatbotWidget() {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          recipient: ["md007@gmail.com", "anziandco@gmail.com", "djam4343@gmail.com"],
+          notification: true,
           subject: `New Support Request from ${userEmail} - Mind That Seeks Truth`,
           content: `
 <!DOCTYPE html>

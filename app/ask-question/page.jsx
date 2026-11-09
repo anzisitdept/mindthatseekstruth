@@ -57,26 +57,16 @@ export default function AskQuestionPage() {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          "x-mailgun-api-key": process.env.NEXT_PUBLIC_MAILGUN_API_KEY
         },
         body: JSON.stringify({
-          "recipient": "Md007m@gmail.com",
+          "notification": true,
           "subject": `A new paid question, Mehran!`,
           "content": `Hello Mehran,\n\nA new question has been submitted and is awaiting your response.\n\nCustomer Details:\n- Name: ${data.customer.name}\n- Email: ${data.customer.email}\n- Gender: ${data.customer.gender}\n\nQuestion:\n\"${data.question}\"\n\n\n\nPlease review and respond as soon as possible.\n\nBest,\nYour Team`,
         }),
       });
-      const response3 = await fetch('/api/send-email', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          "x-mailgun-api-key": process.env.NEXT_PUBLIC_MAILGUN_API_KEY
-        },
-        body: JSON.stringify({
-          "recipient": "djam4343@gmail.com",
-          "subject": `A new paid question, Mehran!`,
-          "content": `Hello Mehran,\n\nA new question has been submitted and is awaiting your response.\n\nCustomer Details:\n- Name: ${data.customer.name}\n- Email: ${data.customer.email}\n- Gender: ${data.customer.gender}\n\nQuestion:\n\"${data.question}\"\n\n\n\nPlease review and respond as soon as possible.\n\nBest,\nYour Team`,
-        }),
-      });
+      if (!response.ok) {
+        throw new Error('Failed to send the new question notification.');
+      }
       toast.success("Your message is received, you will get a reply on your email.")
     } catch (error) {
       toast.error(error.message);

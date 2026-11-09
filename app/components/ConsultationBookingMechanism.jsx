@@ -55,7 +55,6 @@ const ConsultationBookingMechanism = ({planData}) => {
            method: 'POST',
            headers: {
              'Content-Type': 'application/json',
-             "x-mailgun-api-key": process.env.NEXT_PUBLIC_MAILGUN_API_KEY
            },
            body: JSON.stringify({
              "recipient": email,
@@ -70,26 +69,16 @@ const ConsultationBookingMechanism = ({planData}) => {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',
-              "x-mailgun-api-key": process.env.NEXT_PUBLIC_MAILGUN_API_KEY
             },
             body: JSON.stringify({
-              "recipient": "Md007m@gmail.com",
+              "notification": true,
               "subject": `You've new consultation, Mehran!`,
               "content": generateConsultationHtml({name, email, skypeId, time, day, planData: planData}),
             }),
           });
-          const response2 = await fetch('/api/send-email', {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-              "x-mailgun-api-key": process.env.NEXT_PUBLIC_MAILGUN_API_KEY
-            },
-            body: JSON.stringify({
-                        "recipient": "djam4343@gmail.com",
-              "subject": `You've new consultation, Mehran!`,
-              "content": generateConsultationHtml({name, email, skypeId, time, day, planData: planData}),
-            }),
-          });
+          if (!response.ok) {
+            throw new Error('Failed to send the consultation notification.');
+          }
            const wait = await toast.success("consultation booked with mehran!");
             setEmail("");
             setName("")

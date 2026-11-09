@@ -3,7 +3,6 @@ import React, { useRef, useState } from "react";
 import InputField from "../components/InputField.jsx";
 import { Button } from "@material-tailwind/react";
 import { toast } from "react-toastify";
-import axios from "axios";
 import Image from "next/image";
 
 const ContactPage = () => {
@@ -54,25 +53,31 @@ const ContactPage = () => {
       setLoading(false);
     } else {
       try {
-        // Prepare email data
-        const emailData = {
-          from: `Contact Form <postmaster@${process.env.NEXT_PUBLIC_MAILGUN_DOMAIN}>`,
-          to: process.env.NEXT_PUBLIC_MAILGUN_RECIPIENT,
-          subject: "New Contact Form Submission",
-          text: `You have received a new message:\n\nName: ${name}\nEmail: ${email}\nMessage: ${message}`,
-        };
+        const escapeHtml = (value) =>
+          value.replace(/[&<>"']/g, (character) => {
+            const entities = {
+              "&": "&amp;",
+              "<": "&lt;",
+              ">": "&gt;",
+              '"': "&quot;",
+              "'": "&#39;",
+            };
+            return entities[character];
+          });
+        const response = await fetch("/api/send-email", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            notification: true,
+            subject: "New Contact Form Submission",
+            content: `You have received a new message:\n\nName: ${name}\nEmail: ${email}\nMessage: ${message}`,
+            html: `<p>You have received a new message:</p><p>Name: ${escapeHtml(name)}<br>Email: ${escapeHtml(email)}<br>Message: ${escapeHtml(message)}</p>`,
+          }),
+        });
 
-        // Send email using Mailgun API
-        await axios.post(
-          `https://api.mailgun.net/v3/${process.env.NEXT_PUBLIC_MAILGUN_DOMAIN}/messages`,
-          emailData,
-          {
-            auth: {
-              username: "api",
-              password: process.env.NEXT_PUBLIC_MAILGUN_API_KEY,
-            },
-          }
-        );
+        if (!response.ok) {
+          throw new Error("Failed to send the contact form message.");
+        }
 
         handleReset();
         toast.success("Message sent successfully!");
